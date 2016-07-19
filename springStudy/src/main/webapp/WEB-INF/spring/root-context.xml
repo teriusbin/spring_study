@@ -13,8 +13,8 @@
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     	<property name="driverClassName" value ="com.mysql.jdbc.Driver"></property>
     	<property name="url" value ="jdbc:mysql://52.78.65.114:3306/?user=netmarble2016"></property>
-    	<property name="username" value ="netmarble2016"></property>
-    	<property name="password" value ="studySpring"></property>
+    	<property name="username" value =""></property>
+    	<property name="password" value =""></property>
     </bean>
     
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
