@@ -1,8 +1,7 @@
 package www.og.com;
 
-import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -12,6 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import www.og.com.DAO.User;
+import www.og.com.DAO.UserDao;
 
 /**
  * Handles requests for the application home page.
@@ -23,9 +25,11 @@ public class HomeController {
 	public String testString = "I'm test string";
 	/**
 	 * Simply selects the home view to render by returning its name.
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String home(Locale locale, Model model) throws ClassNotFoundException, SQLException {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();
@@ -34,7 +38,18 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		model.addAttribute("serverTime", formattedDate );
 		
-//		testString = dbUID.get(dbUID.size());
+		UserDao ud = new UserDao();
+		User usr = new User();
+		
+		usr.setId("test4");
+		usr.setPwd("test4");
+		usr.setName("ogtest");
+		
+		ud.add(usr);
+		
+		System.out.println("GetUserbyId name:"+ud.getbyId("test4").getName());
+		
+		
 		return "home";
 	}
 	
