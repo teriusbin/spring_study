@@ -4,3 +4,6 @@ bin
 target
 .project
 .springBeans
+.idea
+*.iml
+src/main/resources/jdbc.properties
