@@ -16,8 +16,8 @@ public class MySQLConnectTest extends TestCase {
 	//private static final String USER = "root";
 	//private static final String PWD = "12132323";
 	private static final String URL = "jdbc:mysql://52.78.65.114:3306/STUDY";
-	private static final String USER = "netmarble2016";
-	private static final String PWD = "studySpring";
+	private static final String USER = "";
+	private static final String PWD = "";
 	private ArrayList<String> dbUID = new ArrayList<String>();
 	
 	public void testConnection() throws Exception {
