@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class DBConnection {
 	private static final String DRIVER = "com.mysql.jdbc.Driver";
 	private static final String URL = "jdbc:mysql://52.78.65.114:3306/STUDY";
-	private static final String USER = "netmarble2016";
-	private static final String PWD = "studySpring";
+	private static final String USER = "";
+	private static final String PWD = "";
 	private Connection con;
 	
 	public ArrayList<String> dbUID = new ArrayList<String>();
