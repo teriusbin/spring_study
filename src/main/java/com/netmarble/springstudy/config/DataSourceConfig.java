@@ -1,5 +1,7 @@
 package com.netmarble.springstudy.config;
 
+import javax.sql.DataSource;
+
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -12,14 +14,14 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-
-import javax.sql.DataSource;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * Created by mydus on 2016-07-24.
  */
 @Configuration
 @PropertySource("classpath:/jdbc.properties")
+@EnableTransactionManagement
 @MapperScan("com.netmarble.springstudy.mapper")
 public class DataSourceConfig {
 	

@@ -1,8 +1,12 @@
 package com.netmarble.springstudy;
 
-import com.netmarble.springstudy.config.BaseConfig;
-import com.netmarble.springstudy.domain.User;
-import com.netmarble.springstudy.mapper.UserMapper;
+import static org.junit.Assert.assertTrue;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.sql.DataSource;
 
 import org.junit.After;
 import org.junit.Before;
@@ -12,21 +16,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import javax.sql.DataSource;
-
-import static org.junit.Assert.assertTrue;
+import com.netmarble.springstudy.config.BaseConfig;
+import com.netmarble.springstudy.domain.User;
+import com.netmarble.springstudy.mapper.UserMapper;
 
 /**
  * Created by mydus on 2016-07-24.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = BaseConfig.class, loader = AnnotationConfigContextLoader.class)
+@Transactional
 public class DatasourceTest {
     @Autowired
     DataSource dataSource;
@@ -40,11 +41,6 @@ public class DatasourceTest {
     public void set() throws SQLException{
     	connectionTest();
     	insertTest();
-    }
-    
-    @After
-    public void unset(){
-    	assertTrue(userMapper.deleteUser(user)>0);
     }
     
     private void connectionTest() throws SQLException {

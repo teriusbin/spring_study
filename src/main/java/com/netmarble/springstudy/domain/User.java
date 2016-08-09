@@ -1,12 +1,17 @@
 package com.netmarble.springstudy.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Created by mydus on 2016-08-01.
  */
 public class User {
     private int USER_SEQ;
+    @JsonProperty
     private String USER_ID;
+    @JsonProperty
     private String USER_PASS;
+    @JsonProperty
     private String USER_NAME;
 
     public int getUSER_SEQ() {
