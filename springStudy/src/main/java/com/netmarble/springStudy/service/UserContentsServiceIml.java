@@ -1,5 +1,7 @@
 package com.netmarble.springStudy.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.netmarble.springStudy.dao.UserContentsDao;
@@ -20,7 +22,10 @@ public class UserContentsServiceIml implements UserContetsService{
 	@Override
 	public int insertUser(String id, String pw, String name) {
 		// TODO Auto-generated method stub
-		UserContents user = new UserContents(id, pw, name);
+		UserContents user = new UserContents();
+        user.setUSER_ID(id);
+        user.setUSER_PASS(pw);
+        user.setUSER_NAME(name);
 		return userContentsDao.insertUser(user);
 	}
 
@@ -31,13 +36,19 @@ public class UserContentsServiceIml implements UserContetsService{
 	}
 
 	@Override
-	public int deleteUser(String id, String pw, String name) {
+	public List<UserContents> getUserAll() {
 		// TODO Auto-generated method stub
-		UserContents user = new UserContents(id, pw, name);
-		return userContentsDao.deleteUser(user);
+		return userContentsDao.getUserAll();
 	}
 	
-	
-	
-	
+	@Override
+	public int deleteUser(String id, String pw, String name) {
+		// TODO Auto-generated method stub
+		UserContents user = new UserContents();
+	    user.setUSER_ID(id);
+	    user.setUSER_PASS(pw);
+	    user.setUSER_NAME(name);
+		return userContentsDao.deleteUser(user);
+	}
+
 }

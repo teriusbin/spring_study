@@ -14,7 +14,7 @@ import org.springframework.core.env.Environment;
 
 
 @Configuration
-@ComponentScan("com.netmarble.springstudy")
+@ComponentScan("com.netmarble.springStudy")
 public class BaseConfig {
 
 		@Bean

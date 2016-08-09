@@ -2,9 +2,14 @@ package com.netmarble.springStudy.dao;
 
 import com.netmarble.springStudy.domain.UserContents;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.netmarble.springStudy.dao.mapper.UserMapper;
 
+@Repository
 public class UserContentsDaoImpl implements UserContentsDao{
 
 	@Autowired
@@ -40,6 +45,16 @@ public class UserContentsDaoImpl implements UserContentsDao{
 		return null;
 	}
 
+	@Override
+	public List<UserContents> getUserAll() {
+		try{
+			return userMapper.getUserAll();
+		}catch(Exception e){
+			 System.out.println(e.getMessage());
+		}
+		return null;
+	}
+	
 	@Override
 	public int deleteUser(UserContents user) {
 		try{
