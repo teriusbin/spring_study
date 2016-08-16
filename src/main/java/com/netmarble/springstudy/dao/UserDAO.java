@@ -1,5 +1,7 @@
 package com.netmarble.springstudy.dao;
 
+import com.netmarble.springstudy.constant.ResultStatus;
+import com.netmarble.springstudy.exception.BoardException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,13 +13,12 @@ import com.netmarble.springstudy.mapper.UserMapper;
 public class UserDAO {
 	
 	@Autowired UserMapper mapper;
-	
-	@Transactional
+
 	public boolean addUser(User user){
-		if(mapper.getUserById(user.getUSER_ID())==null){
-			return mapper.insertUser(user)>0;
-		} else {
-			return false;
-		}
+		return mapper.insertUser(user)>0;
+	}
+
+	public User getUser(String id){
+		return mapper.getUserById(id);
 	}
 }

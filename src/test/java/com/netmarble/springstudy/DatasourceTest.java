@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.netmarble.springstudy.config.BaseConfig;
@@ -26,7 +27,8 @@ import com.netmarble.springstudy.mapper.UserMapper;
  * Created by mydus on 2016-07-24.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = BaseConfig.class, loader = AnnotationConfigContextLoader.class)
+@WebAppConfiguration
+@ContextConfiguration(classes = BaseConfig.class)
 @Transactional
 public class DatasourceTest {
     @Autowired
@@ -56,22 +58,22 @@ public class DatasourceTest {
     
     @Test
     public void test(){
-    	User test = userMapper.getUser(user.getUSER_SEQ());
+    	User test = userMapper.getUser(user.getSeq());
     	assertTrue(user.equals(test));
     }
     
     @Test
     public void testID(){
-    	User test = userMapper.getUserById(user.getUSER_ID());
+    	User test = userMapper.getUserById(user.getId());
     	assertTrue(user.equals(test));
     }
     
 
     private User createUser(){
         User user = new User();
-        user.setUSER_ID("dramatic33");
-        user.setUSER_PASS("dramazz");
-        user.setUSER_NAME("hwiyeon.kim");
+        user.setId("dramatic33");
+        user.setPass("dramazz");
+        user.setName("hwiyeon.kim");
         return user;
     }
 }

@@ -1,88 +1,72 @@
 package com.netmarble.springstudy.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Created by mydus on 2016-08-01.
  */
 public class User {
-    private int USER_SEQ;
+    private int seq;
     @JsonProperty
-    private String USER_ID;
+    private String id;
     @JsonProperty
-    private String USER_PASS;
+    private String pass;
     @JsonProperty
-    private String USER_NAME;
+    private String name;
 
-    public int getUSER_SEQ() {
-        return USER_SEQ;
-    }
+	public int getSeq() {
+		return seq;
+	}
 
-    public void setUSER_SEQ(int USER_SEQ) {
-        this.USER_SEQ = USER_SEQ;
-    }
+	public void setSeq(int seq) {
+		this.seq = seq;
+	}
 
-    public String getUSER_ID() {
-        return USER_ID;
-    }
+	public String getId() {
+		return id;
+	}
 
-    public void setUSER_ID(String USER_ID) {
-        this.USER_ID = USER_ID;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public String getUSER_PASS() {
-        return USER_PASS;
-    }
+	public String getPass() {
+		return pass;
+	}
 
-    public void setUSER_PASS(String USER_PASS) {
-        this.USER_PASS = USER_PASS;
-    }
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
 
-    public String getUSER_NAME() {
-        return USER_NAME;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setUSER_NAME(String USER_NAME) {
-        this.USER_NAME = USER_NAME;
-    }
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((USER_ID == null) ? 0 : USER_ID.hashCode());
-		result = prime * result + ((USER_NAME == null) ? 0 : USER_NAME.hashCode());
-		result = prime * result + ((USER_PASS == null) ? 0 : USER_PASS.hashCode());
-		result = prime * result + USER_SEQ;
-		return result;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		if (USER_ID == null) {
-			if (other.USER_ID != null)
-				return false;
-		} else if (!USER_ID.equals(other.USER_ID))
-			return false;
-		if (USER_NAME == null) {
-			if (other.USER_NAME != null)
-				return false;
-		} else if (!USER_NAME.equals(other.USER_NAME))
-			return false;
-		if (USER_PASS == null) {
-			if (other.USER_PASS != null)
-				return false;
-		} else if (!USER_PASS.equals(other.USER_PASS))
-			return false;
-		if (USER_SEQ != other.USER_SEQ)
-			return false;
-		return true;
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		User user = (User) o;
+
+		if (seq != user.seq) return false;
+		if (!id.equals(user.id)) return false;
+		if (!pass.equals(user.pass)) return false;
+		return name.equals(user.name);
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result = seq;
+		result = 31 * result + id.hashCode();
+		result = 31 * result + pass.hashCode();
+		result = 31 * result + name.hashCode();
+		return result;
 	}
 }
