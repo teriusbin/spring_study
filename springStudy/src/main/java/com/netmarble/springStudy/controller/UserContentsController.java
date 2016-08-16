@@ -42,7 +42,6 @@ public class UserContentsController {
 									  @RequestParam(value="pw", required=true)String userPassword,
 									  @RequestParam(value="name", required=true)String userName){
 		
-		
 		int insertedResult = 0;
 		try{
 			insertedResult = userContentsService.deleteUser(userId, userPassword, userName);

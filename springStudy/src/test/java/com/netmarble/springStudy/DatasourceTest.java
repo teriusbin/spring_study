@@ -1,6 +1,8 @@
 package com.netmarble.springStudy;
 
 
+import com.netmarble.springStudy.aop.CacheConsts;
+import com.netmarble.springStudy.aop.CacheRemove;
 import com.netmarble.springStudy.config.BaseConfig;
 import com.netmarble.springStudy.domain.UserContents;
 import com.netmarble.springStudy.dao.mapper.UserMapper;
@@ -28,7 +30,7 @@ import static org.junit.Assert.assertTrue;
 @ContextConfiguration(classes = BaseConfig.class, loader = AnnotationConfigContextLoader.class)
 public class DatasourceTest {
     
-	 @Autowired
+		@Autowired
 	    DataSource dataSource;
 
 	    @Autowired
@@ -59,18 +61,32 @@ public class DatasourceTest {
 	    }*/
 	    
 	    @Test
+		@CacheRemove(cacheName=CacheConsts.DBName)
 	    public void test(){
-	   /* 	UserContents user = new UserContents();
+	    /*	UserContents user = new UserContents();
 	        user.setUSER_ID("teriusbin");
 	        user.setUSER_PASS("1234");
-	        user.setUSER_NAME("woongkyu");*/
-		    List<UserContents> test = userMapper.getUserAll();
+	        user.setUSER_NAME("woongkyu");
+	        
+	        userMapper.insertUser(user);
+	        */
+	        List<UserContents> test = userMapper.getUserAll();
 		    System.out.println("~");
 		    Iterator<UserContents> iterator = test.iterator();
 			while (iterator.hasNext()) {
 				UserContents element = (UserContents) iterator.next();
 				System.out.println(element.getUSER_NAME());
 			}
+			
+			userMapper.deleteUser(user);
+			
+			   List<UserContents> test2 = userMapper.getUserAll();
+			    System.out.println("~");
+			    Iterator<UserContents> iterator2 = test2.iterator();
+				while (iterator2.hasNext()) {
+					UserContents element = (UserContents) iterator2.next();
+					System.out.println(element.getUSER_NAME());
+				}
 	    	//assertTrue(user.equals(test));
 	    }
 	    /*

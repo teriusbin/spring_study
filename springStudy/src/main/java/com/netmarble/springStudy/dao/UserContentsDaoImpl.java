@@ -7,6 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.netmarble.springStudy.aop.CacheRemove;
+import com.netmarble.springStudy.aop.CacheConsts;
 import com.netmarble.springStudy.dao.mapper.UserMapper;
 
 @Repository
@@ -56,6 +58,7 @@ public class UserContentsDaoImpl implements UserContentsDao{
 	}
 	
 	@Override
+	@CacheRemove(cacheName=CacheConsts.DBName)
 	public int deleteUser(UserContents user) {
 		try{
 			return userMapper.deleteUser(user);
